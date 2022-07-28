@@ -1,0 +1,54 @@
+buildscript {
+  repositories {
+      mavenLocal()
+      mavenCentral()
+      maven { url "https://plugins.gradle.org/m2/" }
+  }
+  dependencies {
+      classpath "com.github.jengelman.gradle.plugins:shadow:6.0.0"
+      classpath "com.bertramlabs.plugins:asset-pipeline-gradle:$assetPipelineVersion"
+  }
+}
+
+plugins {
+    id "com.bertramlabs.asset-pipeline" version "3.3.2"
+}
+
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'idea'
+apply plugin: 'com.github.johnrengelman.shadow'
+apply plugin: 'asset-pipeline'
+
+group = 'com.morpheusdata'
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+ext.isReleaseVersion = !version.endsWith("SNAPSHOT")
+
+repositories {
+    mavenCentral()
+		maven { url "https://plugins.gradle.org/m2/" }
+		jcenter()
+		mavenLocal()
+}
+
+dependencies {
+    compileOnly 'com.morpheusdata:morpheus-plugin-api:0.12.5'
+    compileOnly "org.codehaus.groovy:groovy-all:$groovyVersion"
+    implementation "org.slf4j:slf4j-api:$slf4jVersion"
+  	implementation "org.slf4j:slf4j-parent:$slf4jVersion"
+}
+
+jar {
+	manifest {
+		attributes(
+			'Plugin-Class': 'com.morpheusdata.support.LogoLinkPlugin',
+			'Plugin-Version': version,
+		)
+	}
+}
+
+tasks.assemble.dependsOn tasks.shadowJar
+
+

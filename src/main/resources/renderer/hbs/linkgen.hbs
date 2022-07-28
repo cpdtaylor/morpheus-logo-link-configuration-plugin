@@ -1,0 +1,14 @@
+<script type="text/javascript" nonce="{{this.nonse}}">
+  
+  window.addEventListener('DOMContentLoaded', (event) => {
+    var logoLinkPluginHeaderUrl = "{{this.logoLinkPluginHeaderUrl}}".trim()
+    var logoLinkPluginFooterUrl = "{{this.logoLinkPluginFooterUrl}}".trim()
+    if (logoLinkPluginHeaderUrl != undefined && logoLinkPluginHeaderUrl != "" ) {
+      $("#header #topHeader a#logo").attr("href", logoLinkPluginHeaderUrl)
+    }
+    if (logoLinkPluginFooterUrl != undefined && logoLinkPluginFooterUrl != "" ) {
+      $("#footer .logo-container a.morpheus-link").attr("href", logoLinkPluginFooterUrl)
+    }
+  });
+  
+</script>
