@@ -1,6 +1,6 @@
-# Morpheus Logo Link Configuration Plugin
+# Morpheus Logo Hyperlink Configuration Plugin
 
-Example Global UI Morpheus Plugin that enables configuration of the Header & Footer Logo Link.
+Example Global UI Morpheus Plugin that enables configuration of the Header & Footer Logo Hyperlink.
 
 Whitelabeling will need to be enabled for this plugin to operate.
 
